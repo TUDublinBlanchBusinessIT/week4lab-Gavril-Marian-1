@@ -6,10 +6,14 @@ export default function App() {
   
   const [sswd, setSswd] = useState('D');
   const [ob, setOb] = useState('D');
+  const [mobileApps, setMobileApps] = useState('D');
+  const [digitalMarketing, setDigitalMarketing] = useState('D');
+  const [ooad, setOoad] = useState('D');
+  const [financialManagement, setFinancialManagement] = useState('D');
   
   var gpa=0;
   var credits=5;
-  var totalPossibleCredits = 10;
+  var totalPossibleCredits = 30;
   var totalGradeScores = 0;
   
   
@@ -26,6 +30,10 @@ export default function App() {
     //get the student's gradePointsfor Ob, multiply it by the credits
     //add the result to totalGradeScores as an accumulator variable (e.g. tgs=tgs+ob)
    totalGradeScores = totalGradeScores + (gradePoints[ob.toUpperCase()] * credits);
+   totalGradeScores = totalGradeScores + (gradePoints[mobileApps.toUpperCase()] * credits);
+   totalGradeScores = totalGradeScores + (gradePoints[digitalMarketing.toUpperCase()] * credits);
+   totalGradeScores = totalGradeScores + (gradePoints[ooad.toUpperCase()] * credits);
+   totalGradeScores = totalGradeScores + (gradePoints[financialManagement.toUpperCase()] * credits);
    alert("tgs =" + totalGradeScores)
    
     //calculate the gpa as the totalsGradeScores divided by the totalPossibleCredits
@@ -83,6 +91,16 @@ return (
           value={ob}
         />
       </View>
+      <View style={styles.row}>
+      <Text style={styles.label}>Mobile Apps</Text>
+      <TextInput
+        style={styles.textInput}
+        placeholder="Grade"
+        onChangeText={text => setMobileApps(text.toUpperCase())}
+        value={mobileApps}
+      />
+    </View>
+      
 
       <View style={{ marginTop: "5%" }}>
         <Button title="Submit" onPress={clickMe} />
